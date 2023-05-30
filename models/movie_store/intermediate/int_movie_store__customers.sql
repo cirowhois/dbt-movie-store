@@ -25,6 +25,7 @@ with
                         "r.inventory_id",
                         "r.staff_id",
                         "p.payment_id",
+                        "i.film_id"
                     ]
                 )
             }} as customers_sk,
@@ -35,6 +36,7 @@ with
             r.inventory_id,
             r.staff_id,
             p.payment_id,
+            i.film_id,
 
             -- customers attributes
             trim(
