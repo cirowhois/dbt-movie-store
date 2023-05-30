@@ -3,9 +3,9 @@ with
     countries as (
 
         select
-            cast(c.country_id as numeric) as country_id,
-            cast(c.country as string) as country,
-            cast(c.last_update as timestamp) as last_updated_at
+              cast(c.country_id as numeric) as country_id
+            , cast(c.country as string) as country
+            , cast(c.last_update as timestamp) as last_updated_at
         from {{ source("movie_store", "country") }} c
     )
 

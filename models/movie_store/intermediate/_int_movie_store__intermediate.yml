@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  
+  - name: 'int_movie_store__customers'
+    config:
+      materialized: view
+      schema: 'int_movie_store'
+    columns:
+      - name: 'customers_sk'
+        tests:
+          - not_null
+          - unique
+
+  - name: 'int_movie_store__films'
+    config:
+      materialized: view
+      schema: 'int_movie_store'
+    columns:
+      - name: 'films_sk'
+        tests:
+          - not_null
+          - unique
+
+  - name: 'int_movie_store__location'
+    config:
+      materialized: view
+      schema: 'int_movie_store'
+    columns:
+      - name: 'address_id'
+        tests:
+          - not_null
+          - unique
+
+  - name: 'int_movie_store__stores'
+    config:
+      materialized: view
+      schema: 'int_movie_store'
+    columns:
+      - name: 'store_id'
+        tests:
+          - not_null
+          - unique
