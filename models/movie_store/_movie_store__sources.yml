@@ -1,0 +1,85 @@
+version: 2
+
+sources:
+  - name: 'movie_store'
+    description: 'BigQuery Movie Store raw data.'
+    database: 'refera-test-raw'
+    schema: 'movie_store'
+    tables:
+
+      - name: 'actor'
+        description: 'Stores actors data including first name and last name.'
+        columns:
+          - name: 'actor_id'
+
+      - name: 'film'
+        description: 'Stores film data such as title, release year, length, rating, etc.'
+        columns:
+          - name: 'film_id'
+
+      - name: 'film_actor'
+        description: 'Stores the relationships between films and actors.'
+        columns:
+          - name: 'actor_id'
+          - name: 'film_id'
+
+      - name: 'category'
+        description: 'Stores film´s categories data.'
+        columns:
+          - name: 'category_id'
+
+      - name: 'film_category'
+        description: 'Stores the relationships between films and categories.'
+        columns:
+          - name: 'category_id'
+          - name: 'film_id'
+
+      - name: 'language'
+        description: 'Stores film´s language data.'
+        columns:
+          - name: 'language_id'
+
+      - name: 'store'
+        description: 'Contains the store data including manager staff and address.'
+        columns:
+          - name: 'store_id'
+
+      - name: 'inventory'
+        description: 'Stores inventory data.'
+        columns:
+          - name: 'inventory_id'
+
+      - name: 'rental'
+        description: 'Stores rental data'
+        columns:
+          - name: 'rental_id'
+
+      - name: 'payment'
+        description: 'Stores customer’s payments.'
+        columns:
+          - name: 'payment_id'
+
+      - name: 'staff'
+        description: 'Stores staff data.'
+        columns:
+          - name: 'staff_id'
+
+      - name: 'customer'
+        description: 'Stores customer data.'
+        columns:
+          - name: 'customers_id'
+
+      - name: 'address'
+        description: 'Stores address data for staff and customers.'
+        columns:
+          - name: 'address_id'
+
+      - name: 'city'
+        description: 'Stores city names.'
+        columns:
+          - name: 'city_id'
+
+      - name: 'country'
+        description: 'Stores country names.'
+        columns:
+          - name: 'country_id'

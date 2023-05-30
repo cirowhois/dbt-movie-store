@@ -1,0 +1,229 @@
+version: 2
+
+models:
+  
+  - name: 'stg_movie_store__actors'
+    description: 'Stores actors data including first name and last name.'
+    config:
+      materialized: view
+    columns:
+      - name: 'actor_id'
+        description: 'Identifier for the Actors in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: actor_id
+              to: source('movie_store', 'actor')
+ 
+  - name: 'stg_movie_store__films'
+    description: 'Stores film data such as title, release year, length, rating, etc.'
+    config:
+      materialized: view
+    columns:
+      - name: 'film_id'
+        description: 'Identifier for the Movies in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: film_id
+              to: source('movie_store', 'film')
+  
+  - name: 'stg_movie_store__film_actors'
+    description: 'Stores the relationships between films and actors.'
+    config:
+      materialized: view
+    columns:
+      - name: 'film_actors_sk'
+        tests:
+          - unique
+          - not_null
+      - name: 'actor_id'
+        tests:
+          - not_null
+          - relationships:
+              field: actor_id
+              to: source('movie_store', 'film_actor')
+      - name: 'film_id'
+        tests:
+          - not_null
+          - relationships:
+              field: film_id
+              to: source('movie_store', 'film_actor')
+  
+  - name: 'stg_movie_store__categories'
+    description: 'Stores film´s categories data.'
+    config:
+      materialized: view
+    columns:
+      - name: 'category_id'
+        description: 'Identifier for the Categories in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: category_id
+              to: source('movie_store', 'category')
+  
+  - name: 'stg_movie_store__film_categories'
+    description: 'Stores the relationships between films and categories.'
+    config:
+      materialized: view
+    columns:
+      - name: 'film_categories_sk'
+        tests:
+          - unique
+          - not_null
+      - name: 'film_id'
+        tests:
+          - not_null
+          - relationships:
+              field: 'film_id'
+              to: source('movie_store', 'film_category')
+      - name: 'category_id'
+        tests:
+          - not_null
+          - relationships:
+              field: 'category_id'
+              to: source('movie_store', 'category_id')
+  
+  - name: 'stg_movie_store__languages'
+    description: 'Stores film´s language data.'
+    config:
+      materialized: view
+    columns:
+      - name: 'language_id'
+        description: 'Identifier for the Languages in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: language_id
+              to: source('movie_store', 'language')
+  
+  - name: 'stg_movie_store__stores'
+    description: 'Contains the store data including manager staff and address.'
+    config:
+      materialized: view
+    columns:
+      - name: 'store_id'
+        description: 'Identifier for the Stores in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: store_id
+              to: source('movie_store', 'store')
+  
+  - name: 'stg_movie_store__inventories'
+    description: 'Stores inventory data.'
+    config:
+      materialized: view
+    columns:
+      - name: 'inventory_id'
+        description: 'Identifier for the Inventories in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: inventory_id
+              to: source('movie_store', 'inventory')
+  
+  - name: 'stg_movie_store__rentals'
+    description: 'Stores rental data'
+    config:
+      materialized: view
+    columns:
+      - name: 'rental_id'
+        description: 'Identifier for the Rentals in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: rental_id
+              to: source('movie_store', 'rental')
+  
+  - name: 'stg_movie_store__payments'
+    description: 'Stores customer´s payments.'
+    config:
+      materialized: view
+    columns:
+      - name: 'payment_id'
+        description: 'Identifier for the Payments in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: payment_id
+              to: source('movie_store', 'payment')          
+  
+  - name: 'stg_movie_store__staffs'
+    description: 'Stores staff data.'
+    config:
+      materialized: view
+    columns:
+      - name: 'staff_id'
+        description: 'Identifier for the Staffs in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: staff_id
+              to: source('movie_store', 'staff')  
+  
+  - name: 'stg_movie_store__customers'
+    description: 'Stores customer data.'
+    config:
+      materialized: view
+    columns:
+      - name: 'customer_id'
+        description: 'Identifier for the Customers in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: customer_id
+              to: source('movie_store', 'customer')            
+  
+  - name: 'stg_movie_store__addresses'
+    description: 'Stores address data for staff and customers.'
+    config:
+      materialized: view
+    columns:
+      - name: 'address_id'
+        description: 'Identifier for the Addresses in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: address_id
+              to: source('movie_store', 'address')    
+  
+  - name: 'stg_movie_store__cities'
+    description: 'Stores city names.'
+    config:
+      materialized: view
+    columns:
+      - name: 'city_id'
+        description: 'Identifier for the Cities in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: city_id
+              to: source('movie_store', 'city')    
+  
+  - name: 'stg_movie_store__countries'
+    description: 'Stores country names.'
+    config:
+      materialized: view
+    columns:
+      - name: 'country_id'
+        description: 'Identifier for the Countries in the table.'
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              field: country_id
+              to: source('movie_store', 'country') 
