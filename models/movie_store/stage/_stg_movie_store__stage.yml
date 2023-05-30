@@ -5,7 +5,8 @@ models:
   - name: 'stg_movie_store__actors'
     description: 'Stores actors data including first name and last name.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'actor_id'
         description: 'Identifier for the Actors in the table.'
@@ -19,7 +20,8 @@ models:
   - name: 'stg_movie_store__films'
     description: 'Stores film data such as title, release year, length, rating, etc.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'film_id'
         description: 'Identifier for the Movies in the table.'
@@ -33,7 +35,8 @@ models:
   - name: 'stg_movie_store__film_actors'
     description: 'Stores the relationships between films and actors.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'film_actors_sk'
         tests:
@@ -55,7 +58,8 @@ models:
   - name: 'stg_movie_store__categories'
     description: 'Stores film´s categories data.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'category_id'
         description: 'Identifier for the Categories in the table.'
@@ -69,7 +73,8 @@ models:
   - name: 'stg_movie_store__film_categories'
     description: 'Stores the relationships between films and categories.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'film_categories_sk'
         tests:
@@ -91,7 +96,8 @@ models:
   - name: 'stg_movie_store__languages'
     description: 'Stores film´s language data.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'language_id'
         description: 'Identifier for the Languages in the table.'
@@ -105,7 +111,8 @@ models:
   - name: 'stg_movie_store__stores'
     description: 'Contains the store data including manager staff and address.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'store_id'
         description: 'Identifier for the Stores in the table.'
@@ -119,7 +126,8 @@ models:
   - name: 'stg_movie_store__inventories'
     description: 'Stores inventory data.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'inventory_id'
         description: 'Identifier for the Inventories in the table.'
@@ -133,7 +141,8 @@ models:
   - name: 'stg_movie_store__rentals'
     description: 'Stores rental data'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'rental_id'
         description: 'Identifier for the Rentals in the table.'
@@ -147,7 +156,8 @@ models:
   - name: 'stg_movie_store__payments'
     description: 'Stores customer´s payments.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'payment_id'
         description: 'Identifier for the Payments in the table.'
@@ -161,7 +171,8 @@ models:
   - name: 'stg_movie_store__staffs'
     description: 'Stores staff data.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'staff_id'
         description: 'Identifier for the Staffs in the table.'
@@ -175,7 +186,8 @@ models:
   - name: 'stg_movie_store__customers'
     description: 'Stores customer data.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'customer_id'
         description: 'Identifier for the Customers in the table.'
@@ -189,7 +201,8 @@ models:
   - name: 'stg_movie_store__addresses'
     description: 'Stores address data for staff and customers.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'address_id'
         description: 'Identifier for the Addresses in the table.'
@@ -203,7 +216,8 @@ models:
   - name: 'stg_movie_store__cities'
     description: 'Stores city names.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'city_id'
         description: 'Identifier for the Cities in the table.'
@@ -217,7 +231,8 @@ models:
   - name: 'stg_movie_store__countries'
     description: 'Stores country names.'
     config:
-      materialized: view
+      materialized: table
+      schema: 'stg_movie_store'
     columns:
       - name: 'country_id'
         description: 'Identifier for the Countries in the table.'
