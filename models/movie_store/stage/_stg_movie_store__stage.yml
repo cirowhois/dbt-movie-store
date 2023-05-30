@@ -91,7 +91,7 @@ models:
           - not_null
           - relationships:
               field: 'category_id'
-              to: source('movie_store', 'category_id')
+              to: source('movie_store', 'category')
   
   - name: 'stg_movie_store__languages'
     description: 'Stores film´s language data.'
