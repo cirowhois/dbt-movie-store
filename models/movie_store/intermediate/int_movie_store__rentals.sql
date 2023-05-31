@@ -41,7 +41,8 @@ with
                 coalesce(c.first_name, '') || ' ' || coalesce(c.last_name, '')
             ) as customers_name,
             c.address_id as customer_address_id,
-            email as customers_email
+            c.email as customers_email,
+            c.created_date as customer_created_date
         from payments p
         left join rentals r on p.rental_id = r.rental_id
         left join inventories i on r.inventory_id = i.inventory_id
