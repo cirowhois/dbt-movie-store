@@ -2,7 +2,7 @@ version: 2
 
 models:
   
-  - name: 'int_movie_store__customers'
+  - name: 'int_movie_store__rentals'
     config:
       materialized: view
       schema: 'int_movie_store'

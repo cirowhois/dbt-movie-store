@@ -23,27 +23,22 @@ with
             -- identifiers
             {{
                 dbt_utils.generate_surrogate_key(
-                    ["f.film_id", "f.language_id", "fa.actor_id", "fc.category_id"]
+                    ["f.film_id", "f.language_id", "fc.category_id"]
                 )
             }} as films_sk,
             f.film_id,
             f.language_id,
-            fa.actor_id,
             fc.category_id,
 
             -- film attributes
             f.title,
             f.description,
             f.release_year,
-            trim(
-                coalesce(a.first_name, '') || ' ' || coalesce(a.last_name, '')
-            ) as actors_name,
             c.name as category,
             l.name as language,
             f.length,
             f.rating,
-            f.special_features,
-            f.fulltext,
+            array_agg(trim(coalesce(a.first_name, '') || ' ' || coalesce(a.last_name, ''))) as actors,
 
             -- rental attributes
             f.rental_duration,
@@ -56,6 +51,7 @@ with
         left join film_categories fc on f.film_id = fc.film_id
         left join categories c on fc.category_id = c.category_id
         left join languages l on f.language_id = l.language_id
+        group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15
 
     )
 
