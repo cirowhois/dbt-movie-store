@@ -7,7 +7,7 @@ models:
       materialized: view
       schema: 'int_movie_store'
     columns:
-      - name: 'customers_sk'
+      - name: 'rentals_sk'
         tests:
           - not_null
           - unique
