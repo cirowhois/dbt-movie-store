@@ -16,7 +16,7 @@ with
             -- staff attributes
             trim(
                 coalesce(ss.first_name, '') || ' ' || coalesce(ss.last_name, '')
-            ) as staffs_name,
+            ) as staff_name,
             ss.email as staff_email
         from stores s
         left join staffs ss on s.manager_staff_id = ss.staff_id
