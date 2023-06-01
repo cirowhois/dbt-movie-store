@@ -15,4 +15,4 @@ select
     count(case when is_delayed = 'yes' then 1 else null end) as delayed_rentals,
     count(case when is_delayed = 'no' then 1 else null end) as ontime_rentals
 from {{ ref("fct_movie_store__payments") }}
-group by 1,2,3,4,5,6,7,8
+group by 1,2,3,4,5,6,7,8,9
