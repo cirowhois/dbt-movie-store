@@ -9,6 +9,7 @@ select
     film_length,
     film_rating,
     film_rep_cost,
+    film_actors_list,
     count(distinct(rental_id)) as rental_count,
     sum(amount_in_dollars) as total_amount,
     count(case when is_delayed = 'yes' then 1 else null end) as delayed_rentals,
