@@ -37,6 +37,6 @@ with
         group by 1, 2, 3, 4, 5, 6, 7, 8
     )
 
-select dp.film_id, a.film_actors
+select dp.*, a.film_actors
 from dim_prep dp
 left join actors_array a on dp.film_id = a.film_id
