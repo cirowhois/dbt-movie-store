@@ -3,17 +3,17 @@
 -- converting array to string
 with
     actors_string as (
-        select distinct film_id, array_to_string(film_actors, ';') as film_actors
+        select distinct
+            film_id,
+            trim(
+                '{"actors":["' || array_to_string(film_actors, '","') || '"]}'
+            ) as film_actors
         from {{ ref("fct_movie_store__payments") }}
     ),
 
     -- reconverting string to array with no duplicated lines
     actors_array as (
-        select
-            film_id,
-            array(
-                select film_actors from unnest(split(film_actors, ';'))
-            ) as film_actors
+        select film_id, json_extract_array(film_actors, '$.actors') as film_actors
         from actors_string
 
     ),
@@ -37,6 +37,6 @@ with
         group by 1, 2, 3, 4, 5, 6, 7, 8
     )
 
-select dp.*, a.film_actors
+select dp.film_id, a.film_actors
 from dim_prep dp
 left join actors_array a on dp.film_id = a.film_id
