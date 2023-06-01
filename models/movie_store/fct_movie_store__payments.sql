@@ -56,6 +56,7 @@ with
             , f.rental_duration as film_rental_duration
             , f.rental_rate as film_rental_rate
             , f.replacement_cost_in_dollars as film_rep_cost
+            , f.actors as film_actors
 
             -- store
             , r.store_id
