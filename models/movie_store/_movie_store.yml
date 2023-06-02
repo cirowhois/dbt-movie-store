@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: 'fct_movie_store__payments'
+    description: 'Tabela fato reunindo todos os atributos principais dos conjuntos de dados da Play Movies girando em torno das receitas das atividades da empresa.'
+    columns:
+      - name: payments_sk
+        tests:
+          - not_null
+          - unique
+  - name: 'dim_movie_store__pay_customers'
+    description: 'Dimensão: Dados envolvendo a receita a partir da ótica dos clientes da Play Movies'
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+  - name: 'dim_movie_store__pay_films'
+    description: 'Dimensão: Dados envolvendo a receita a partir da ótica dos filmes alugados pela empresa'
+    columns:
+      - name: film_id
+        tests:
+          - not_null
+          - unique
+  - name: 'dim_movie_store__pay_stores'
+    description: 'Dimensão: Dados envolvendo a receita a partir da ótica das lojas da empresa'
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - unique

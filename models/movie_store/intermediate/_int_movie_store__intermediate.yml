@@ -11,6 +11,37 @@ models:
         tests:
           - not_null
           - unique
+      - name: 'payment_id'
+        tests:
+          - not_null
+          - relationships:
+              field: 'payment_id'
+              to: ref('stg_movie_store__payments')
+      - name: 'customer_id'
+        tests:
+          - relationships:
+              field: 'customer_id'
+              to: ref('stg_movie_store__customers')
+      - name: 'rental_id'
+        tests:
+          - relationships:
+              field: 'rental_id'
+              to: ref('stg_movie_store__rentals')
+      - name: 'inventory_id'
+        tests:
+          - relationships:
+              field: 'inventory_id'
+              to: ref('stg_movie_store__inventories')
+      - name: 'film_id'
+        tests:
+          - relationships:
+              field: 'film_id'
+              to: ref('stg_movie_store__films')
+      - name: 'store_id'
+        tests:
+          - relationships:
+              field: 'store_id'
+              to: ref('stg_movie_store__stores')
 
   - name: 'int_movie_store__films'
     config:
@@ -21,6 +52,24 @@ models:
         tests:
           - not_null
           - unique
+      - name: 'film_id'
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_movie_store__films')
+              field: film_id
+      - name: 'language_id'
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_movie_store__languages')
+              field: language_id
+      - name: 'category_id'
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_movie_store__categories')
+              field: category_id
 
   - name: 'int_movie_store__location'
     config:
@@ -31,6 +80,9 @@ models:
         tests:
           - not_null
           - unique
+          - relationships:
+              to: ref('stg_movie_store__addresses')
+              field: address_id
 
   - name: 'int_movie_store__stores'
     config:
@@ -41,3 +93,6 @@ models:
         tests:
           - not_null
           - unique
+          - relationships:
+              to: ref('stg_movie_store__stores')
+              field: store_id

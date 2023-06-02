@@ -12,20 +12,18 @@ with
     addresses_joins as (
         select
             -- identifiers
-            a.address_id,
-            a.city_id,
-            c.country_id,
-            
+            a.address_id
+            , a.city_id
+            , c.country_id
             -- location
-            trim(
+            , trim(
                 coalesce(a.address, '') || ' ' || coalesce(a.address2, '')
-            ) as full_address,
-            a.district,
-            c.city,
-            cc.country,
-            a.postal_code,
-            a.phone
-
+            ) as full_address
+            , a.district
+            , c.city
+            , cc.country
+            , a.postal_code
+            , a.phone
         from addresses a
         left join cities c on a.city_id = c.city_id
         left join countries cc on c.country_id = cc.country_id

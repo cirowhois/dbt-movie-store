@@ -25,26 +25,23 @@ with
                 dbt_utils.generate_surrogate_key(
                     ["f.film_id", "f.language_id", "fc.category_id"]
                 )
-            }} as films_sk,
-            f.film_id,
-            f.language_id,
-            fc.category_id,
-
+            }} as films_sk
+            , f.film_id
+            , f.language_id
+            , fc.category_id
             -- film attributes
-            f.title,
-            f.description,
-            f.release_year,
-            c.name as category,
-            l.name as language,
-            f.length,
-            f.rating,
-            array_agg(trim(coalesce(a.first_name, '') || ' ' || coalesce(a.last_name, ''))) as actors,
-
+            , f.title
+            , f.description
+            , f.release_year
+            , c.name as category
+            , l.name as language
+            , f.length
+            , f.rating
+            , array_agg(trim(coalesce(a.first_name, '') || ' ' || coalesce(a.last_name, ''))) as actors
             -- rental attributes
-            f.rental_duration,
-            f.rental_rate,
-            f.replacement_cost_in_dollars
-
+            , f.rental_duration
+            , f.rental_rate
+            , f.replacement_cost_in_dollars
         from films f
         left join film_actors fa on f.film_id = fa.film_id
         left join actors a on fa.actor_id = a.actor_id
